@@ -8,15 +8,15 @@ from django.http import HttpResponse
 def listOfOrders(request):
   cursor = connection.cursor()
   reportTitle = "Order List"
-  sqlQuery = "SELECT order_number, order_item, total_amount, order_date FROM report_app_order"
-  columnsToBeSummarized = ['total_amount']
+  sqlQuery = "SELECT order_number AS 'No.', order_item AS 'Item', total_amount AS 'Price', order_date AS 'Date' FROM report_app_order"
+  columnsToBeSummarized = ['Price']
   fontName = "Arial"
   cssClasses = "reportTable container"
   headerRowBackgroundColor = '#ffeeee'
   evenRowsBackgroundColor = '#ffeeff'
   oddRowsBackgroundColor = '#ffffff'
   table = DjangoQtt.generateFromSql(cursor, reportTitle, sqlQuery, columnsToBeSummarized, cssClasses,
-                                  "ltr", fontName, "Total amount", True,
+                                  "ltr", fontName, "Total Price", True,
                                   headerRowBackgroundColor, evenRowsBackgroundColor, oddRowsBackgroundColor
                                   )
   # table is a string variable contianing the html table showing the query result
