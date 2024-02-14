@@ -1,10 +1,8 @@
-from django.shortcuts import render
-
 from django.db import connection
 from django_query_to_table import DjangoQtt
 from django.http import HttpResponse
 
-# view function in Django project
+# View function in Django project
 def listOfOrders(request):
   cursor = connection.cursor()
   reportTitle = "Order List"
@@ -20,5 +18,4 @@ def listOfOrders(request):
                                   headerRowBackgroundColor, evenRowsBackgroundColor, oddRowsBackgroundColor
                                   )
   # table is a string variable contianing the html table showing the query result
-
   return HttpResponse(table)
